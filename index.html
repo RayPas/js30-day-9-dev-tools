@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    const p = document.querySelector('p');
+
+    // Regular
+    console.log("hello");
+
+    // Interpolated
+    console.log('Hello I am a %s string!', 'emoji')
+    // Styled
+    console.log('%c I am some great text', 'font-size:20px; background:blue;')
+    // warning!
+    console.warn('Oh no!')
+    // Error :|
+    console.error('Oops')
+    // Info
+    console.info('4 people die from cork related incidents a year');
+    // Testing
+    console.assert(1 === 2, "that's not right");
+    // clearing
+    console.clear();
+    // Viewing DOM Elements
+    console.dir(p)
+    // Grouping together
+    dogs.forEach(dog => {
+        // or console.groupCollapsed
+        console.group(`${dog.name}`)
+        console.log(`this is ${dog.name}`);
+        console.log(`${dog.name} is ${dog.age} years old`);
+        console.log(`this is ${dog.name}`);
+        console.groupEnd(`${dog.name}`);
+    })
+    // counting
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Wes');
+    // timing
+    console.time("yeet")
+    fetch('https://api.github.com/users/wesbos')
+        .then(data => data.json())
+        .then(data => {
+            console.timeEnd('yeet');
+            console.log(data);
+        })
+  </script>
+</body>
+</html>
